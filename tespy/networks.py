@@ -610,6 +610,11 @@ class network:
             - Set component and connection design point properties.
             - Switch from design/offdesign parameter specification.
         """
+        if len(self.conns) == 0:
+            msg = ('No connections have been added to the network')
+            logging.error(msg)
+            raise hlp.TESPyNetworkError(msg)
+            
         if len(self.fluids) == 0:
             msg = ('Network has no fluids, please specify a list with fluids on network creation.')
             logging.error(msg)
